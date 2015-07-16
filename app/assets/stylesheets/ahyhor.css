@@ -1,0 +1,9 @@
+/*
+ * This is the manifest css file for the web application designed and developed for ahyhor studios
+ * by THE MYDAS. It will be compiled into the application at the start of the server
+ *
+ * All the necessary Css files have been required
+ *
+ *= require_tree .
+ *= require controlbox
+ */

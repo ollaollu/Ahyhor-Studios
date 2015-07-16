@@ -1,0 +1,38 @@
+
+  <%= form_for [refinery, :inquiries, inquiry], :html => {:id => "con_form"} do |f| %>
+    <%= render :partial => "/refinery/admin/error_messages",
+               :locals => {
+                 :object => inquiry,
+                 :include_object_name => true
+               } %>
+    <div>
+      <%= f.label "Name: *" %>
+      <%= f.text_field :name, :required => 'required',
+        :placeholder => (t('name', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+    </div>
+    <div>
+      <%= f.label "Email: *" %>
+      <%= f.email_field :email, :required => 'required',
+        :placeholder => (t('email', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+    </div>
+
+    <% if Refinery::Inquiries.show_phone_number_field %>
+      <div>
+        <%= f.label "Phone: " %>
+        <%= f.text_field :phone,
+          :placeholder => (t('phone', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+      </div>
+    <% end %>
+
+    <div style="height:130px;">
+      <%= f.label "Message: *" %>
+      <%= f.text_area :message, :rows => 8, :required => 'required',
+        :placeholder => (t('message', :scope => 'activerecord.attributes.refinery/inquiries/inquiry') if Refinery::Inquiries.show_placeholders) %>
+    </div>
+    <div>
+      <%= f.submit t('.send') %>
+      <%= link_to t('.privacy_policy'), "/pages/privacy-policy", :id => "privacy_link" if Refinery::Inquiries.show_contact_privacy_link %>
+    </div>
+  <% end %>
+ 
+

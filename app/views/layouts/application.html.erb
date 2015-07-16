@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<%= render "/refinery/html_tag" %>
+  <% site_bar = render('/refinery/site_bar', :head => true) -%>
+  <head>
+    <%= render "/refinery/head" %>
+  </head>
+  <body id="<%= canonical_id @page %>">
+
+    <%= site_bar -%>
+    <div id="page_container" class="main-container">
+
+    <div id="briefinfo">
+      <div id="tp">
+        <div class="patch3">
+        <span id="phone"></span>
+        <span>+234-8036663143</span> <span>+234-8027483390</span>
+        </div>
+
+            <div class="close">
+              <span>Close</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-container-mainContainer">
+    
+    <% if current_page?(refinery.portfolio_root_path) %>
+      
+    <% else %>
+      <header id="header">
+        <%= render "/refinery/header" -%>
+      </header>      
+    <% end %>
+
+        <div class="maindisplay">
+        <section id="page">
+          <%= yield %>
+        </section>
+        </div>
+
+      <%= render "/refinery/footer" -%>
+    </div>    
+
+    </div>
+    <%= render "/refinery/javascripts" %>
+
+  </body>
+</html>

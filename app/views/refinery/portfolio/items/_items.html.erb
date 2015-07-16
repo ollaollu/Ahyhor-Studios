@@ -1,0 +1,30 @@
+<%- if items.present? -%>
+            <div id="GbgPopup">
+				<div id="GPopupcontent">
+					<div class="closeit"></div>
+					<span class="ecs_tooltip_">Press esc to close <span class="arrow"></span></span>
+					<div class="image">
+						<img src="" height="470" width="810" />
+					</div>	       
+				</div>
+			</div>
+<div class="sect">
+	<h1 id="ss"><%= link_to "Portfolio", refinery.portfolio_root_path %> << <%= @gallery.title %></h1>
+	<% items.each do |item| %>
+			<div class="master">
+        		<div id="imgprop">
+             	<%= image_tag(item.image.url, {:id => dom_id(item), :title => item.title, :width => "238", :height => "238"}) %>
+             	</div>
+
+	             <div id="ps1" class="popit">
+	             	<section>
+	             		  <% if ::Refinery::Portfolio.display_item_text %>
+						      <span><%= raw item.caption %></span>
+						      <span id="zoom"></span>
+						  <% end %>       		
+	             	</section>
+	             </div>             	
+            </div>
+	<% end %>
+</div>	
+<%- end -%>

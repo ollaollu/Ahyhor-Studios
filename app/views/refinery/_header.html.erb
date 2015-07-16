@@ -1,0 +1,13 @@
+<div class="topdisplaynavigation">
+    <div id="logo">
+		<%= link_to (image_tag "ahyic.png"), refinery.root_path, :alt => "ahyhor studios logo" %>
+		<%= image_tag "ahyicMAIN.png", :alt => "ahyhor studios logo" %>
+	</div>
+    <%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
+    <div id="megalinktop">
+        <ul>
+            <li><%= link_to "Portfolio", refinery.portfolio_root_path, :id => "on_" %></li>
+        	<li><a class="topopup" href="">Quickie</a></li>
+        </ul>
+    </div>
+</div>

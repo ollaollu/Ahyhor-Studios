@@ -1,0 +1,21 @@
+<div id="maindisplay_temp">
+	<div id="quickbreak">
+		<div class="logobn"></div>
+		<%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
+		<div id="megalink"><a>FOLLOW US</a></div>
+	</div>
+</div>
+
+<% main_slideshow = Refinery::ImageSlideshows::ImageSlideshow.find_by_title('Home') %>
+<div id="slidebackgroundmajor">
+	<div id="slidebginner">
+		<div class="controls"></div>		
+		<% main_slideshow.image_slides.each_with_index do |image_slide, index| %>
+				<% if index == 0 %>
+					<div class="active last-active" id="slide"><%= image_tag image_slide.image.url %></div>
+				<% end %>
+              	<div id="slide"><%= image_tag image_slide.image.url %></div>          
+          <% end %>        
+	</div>
+</div>
+

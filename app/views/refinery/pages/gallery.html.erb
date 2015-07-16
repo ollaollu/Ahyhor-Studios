@@ -1,0 +1,45 @@
+<section>
+	<div id="marker">
+		<%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
+		<%= raw @page.content_for(Refinery::Pages.default_parts.second.to_sym) %>
+  	  	<%= yield :side_body %> 
+	</div>
+
+	<div id="GbgPopup">
+		<div id="GPopupcontent">
+			<div class="closeit"></div>
+			<span class="ecs_tooltip_">Press esc to close <span class="arrow"></span></span>
+			<div class="image">
+				<img src="" height="470" width="810" />
+			</div>	       
+		</div>
+	</div>
+
+	<div id="gallerypouch">
+		<div class="sect">
+        <% @page.images.each_with_index do |image, index| %>
+        	<div class="master">
+             <%= content_tag(:div, image_tag(image.thumbnail.url, :height => "238", :width=> "238"), :id => "imgprop") + content_tag(:div, content_tag(:section, content_tag(:span, nil, :id => "zoom"), nil), :id => "ps1", :class => "popit") %>
+            </div>
+       <% end %>
+		</div>
+	</div>
+<!--
+						<div class="pagenavi">
+							<div id="browseprev"><span>Previous</span></div>
+
+							<div  id="browseconst">
+								<ul>
+									<li><a id="active" href="">1</a></li>
+									<li><a href="">2</a></li>
+									<li><a href="">3</a></li>
+									<li><a href="">4</a></li>
+									<li><a href="">5</a></li>
+								</ul>
+							</div>
+
+							<div  id="browsenext"><a href="">Next</a></div>
+						</div>
+-->
+</section>
+

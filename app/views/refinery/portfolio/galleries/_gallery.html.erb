@@ -1,0 +1,15 @@
+<li id="<%= dom_id(gallery) %>">
+  <%= link_to refinery.portfolio_gallery_path(gallery) do %>
+    <% if gallery.cover_image.present? %>
+    <%= gallery.title %>
+        <%= image_fu gallery.cover_image.image, 
+              ::Refinery::Portfolio.cover_image_thumb_size,
+              {:width => "197", :height => "87"} %>
+    <% end %>
+
+        
+        <% if ::Refinery::Portfolio.display_gallery_text %>
+          <%= raw gallery.description %>
+        <% end %>
+  <% end %>
+</li>

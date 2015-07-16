@@ -1,0 +1,86 @@
+<% if @items.empty? %>
+
+<div id="maindisplay_temp_">
+	<div id="quickbreak">
+		<div class="logobn"></div>
+	</div>
+
+	<div class="portpanel">
+
+	<div id="prop" style="margin:0px 0px 0px 1.6%;">
+		<%= link_to refinery.root_path, :id => "H" do %>
+			<span id="ic"></span>
+			<span>HOME</span>
+
+			<div>
+			<p>Our very own landing page, this leads to everywhere</p>
+			</div>			
+		<% end %>
+
+		<%= link_to "/gallery", :id => "G" do %>
+			<span id="ic"></span>
+			<span>GALLERY</span>
+
+			<div>
+			<p>We love to capture moments of events, places and people.</p>
+			</div>
+		<% end %>
+	</div>
+
+	<div id="prop">
+		<div id="P">
+			<ul id="uncut">
+			<h2>Our Works</h2>
+				<%= render 'galleries', :galleries => @galleries %>
+			</ul>	
+		</div>
+	</div>
+
+	<div id="prop">
+		<%= link_to "#", :id => "B" do %>
+			<span id="ic"></span>
+			<span>BLOG</span>
+
+			<div>
+			<p>Discover what we've been up to</p>
+			</div>
+		<% end %>
+		<%= link_to refinery.inquiries_new_inquiry_path, :id => "C" do %>
+			<span id="ic"></span>
+			<span>CONTACT</span>
+
+			<div>
+			<p>Get in touch with us</p>
+			</div>
+		<% end %>
+	</div>
+
+	</div>
+
+</div>
+
+<% main_slideshow = Refinery::ImageSlideshows::ImageSlideshow.find_by_title('Portfolio') %>
+<div id="slidebackgroundmajor">
+	<div id="slidebginner">
+		<div class="controls"></div>		
+		<% main_slideshow.image_slides.each_with_index do |image_slide, index| %>
+				<% if index == 0 %>
+					<div class="active last-active" id="slide"><%= image_tag image_slide.image.url %></div>
+				<% end %>
+              	<div id="slide"><%= image_tag image_slide.image.url %></div>          
+          <% end %>        
+	</div>
+</div>
+
+<% else %>
+
+
+<section>
+	<div id="gallerypouch">
+			<%= render 'refinery/portfolio/items/items', :items => @items %> 
+	</div>
+</section>
+
+
+<% end %>
+
